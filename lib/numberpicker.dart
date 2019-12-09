@@ -64,6 +64,7 @@ class NumberPicker extends StatelessWidget {
     this.zeroPad = false,
     this.highlightSelectedValue = true,
     this.decoration,
+    this.selectedColor,
   })  : assert(initialValue != null),
         assert(minValue != null),
         assert(maxValue != null),
@@ -167,6 +168,9 @@ class NumberPicker extends StatelessWidget {
   ///Decoration to apply to central box where the selected value is placed
   final Decoration decoration;
 
+  ///Color of selected integer
+  final Color selectedColor;
+
   ///Step between elements. Only for integer datePicker
   ///Examples:
   /// if step is 100 the following elements may be 100, 200, 300...
@@ -243,7 +247,7 @@ class NumberPicker extends StatelessWidget {
   Widget _integerListView(ThemeData themeData) {
     TextStyle defaultStyle = themeData.textTheme.body1;
     TextStyle selectedStyle =
-        themeData.textTheme.headline.copyWith(color: themeData.accentColor);
+        themeData.textTheme.headline.copyWith(color: ( this.selectedColor == null ) ?themeData.accentColor : this.selectedColor);
 
     var listItemCount = integerItemCount + 2;
 
